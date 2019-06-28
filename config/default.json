@@ -1,3 +1,3 @@
 {
-  "mongoURI": "mongodb+srv://kirasiris:angeldelamuerte@devconnector-yith0.mongodb.net/secrets?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://USERNAME:PASSWORD@DB-yith0.mongodb.net/collection?retryWrites=true&w=majority"
 }
