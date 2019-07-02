@@ -9,20 +9,20 @@ Feel free to use it and submit any feedback you might think about!.
 $ git clone https://github.com/kirasiris/secrets.git
 
 ## Install dependencies on root folder
-$ cd secrets
-$ npm install
+* $ cd secrets
+* $ npm install
 
 ## Install dependencies in client folder
-$ cd secrets/client
-$ npm install
+* $ cd secrets/client
+* $ npm install
 
 ## Run dev in main folder
-$ cd ../
-$ npm run dev
+* $ cd ../
+* $ npm run dev
 
 
 ## Verify its running
-locahost:5000
+* locahost:5000
 
 ## Access to it
-localhost:3000
+* localhost:3000
