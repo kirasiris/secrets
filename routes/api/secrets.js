@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
 // Models
 const Secret = require('../../models/Secrets');
 
@@ -55,7 +55,11 @@ router.post(
 
 router.get('/', async (req, res) => {
   try {
-    const secrets = await Secret.find().sort({ date: -1 });
+    const pageOptions = {
+      page: parseInt(req.query.page) || 0,
+      limit: parseInt(req.query.limit) || 50
+    }
+    const secrets = await Secret.find().sort({ date: -1 }).skip(pageOptions.page * pageOptions.limit).limit(pageOptions.limit);
     res.json(secrets);
   } catch (err) {
     console.error(err.message);
@@ -68,7 +72,11 @@ router.get('/', async (req, res) => {
 // @access      Public
 router.get('/male', async (req, res) => {
   try {
-    const secrets = await Secret.find({ sex: 'male' }).sort({ date: -1 });
+    const pageOptions = {
+      page: parseInt(req.query.page) || 0,
+      limit: parseInt(req.query.limit) || 50
+    }
+    const secrets = await Secret.find({ sex: 'male' }).sort({ date: -1 }).skip(pageOptions.page * pageOptions.limit).limit(pageOptions.limit);
     res.json(secrets);
   } catch (err) {
     console.error(err.message);
@@ -81,7 +89,11 @@ router.get('/male', async (req, res) => {
 // @access      Public
 router.get('/female', async (req, res) => {
   try {
-    const secrets = await Secret.find({ sex: 'female' }).sort({ date: -1 });
+    const pageOptions = {
+      page: parseInt(req.query.page) || 0,
+      limit: parseInt(req.query.limit) || 50
+    }
+    const secrets = await Secret.find({ sex: 'female' }).sort({ date: -1 }).skip(pageOptions.page * pageOptions.limit).limit(pageOptions.limit);
     res.json(secrets);
   } catch (err) {
     console.error(err.message);
@@ -94,7 +106,11 @@ router.get('/female', async (req, res) => {
 // @access      Public
 router.get('/other', async (req, res) => {
   try {
-    const secrets = await Secret.find({ sex: 'other' }).sort({ date: -1 });
+    const pageOptions = {
+      page: parseInt(req.query.page) || 0,
+      limit: parseInt(req.query.limit) || 50
+    }
+    const secrets = await Secret.find({ sex: 'other' }).sort({ date: -1 }).skip(pageOptions.page * pageOptions.limit).limit(pageOptions.limit);
     res.json(secrets);
   } catch (err) {
     console.error(err.message);
@@ -107,7 +123,11 @@ router.get('/other', async (req, res) => {
 // @access      Public
 router.get('/nsfw', async (req, res) => {
   try {
-    const secrets = await Secret.find({ nsfw: 'yes' }).sort({ date: -1 });
+    const pageOptions = {
+      page: parseInt(req.query.page) || 0,
+      limit: parseInt(req.query.limit) || 50
+    }
+    const secrets = await Secret.find({ nsfw: 'yes' }).sort({ date: -1 }).skip(pageOptions.page * pageOptions.limit).limit(pageOptions.limit);
     res.json(secrets);
   } catch (err) {
     console.error(err.message);
